@@ -1,40 +1,104 @@
-
-
 <?php
-session_start();
 include "config.php";
 
-if(isset($_POST['register_btn']))
-{
-$name = $_POST['name'];
-$phone =  $_POST['phone'];
-$email = $_POST['email'];
-$password = $_POST['password'];
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
 
-$check_email_query = "SELECT db_email FROM users WHERE email= '$db_email' LIMIT 1";
-$check_email_query_run = mysqli_query($conn, $check_email_query);
+require 'vendor/autoload.php';
 
-if(mysqli_num_rows($check_email_query_run) > 0)
+function sendmail($r_email, $r_username, $verify_token)
 {
-    $_SESSION['status'] = "Email id already Exists";
-    header("Location: register.php");
+    //Server settings
+    $mail = new PHPMailer(true);
+    $mail->SMTPDebug = SMTP::DEBUG_SERVER; //Enable verbose debug output
+    $mail->isSMTP(); //Send using SMTP
+    $mail->SMTPAuth = true; //Enable SMTP authentication
+
+    $mail->Host = 'smtp.gmail.com'; //Set the SMTP server to send through
+    $mail->Username = 'ferdousjannat0103@gmail.com'; //SMTP username
+    $mail->Password = 'xvduhbgpzbgpbarq'; //SMTP password
+
+    $mail->SMTPOptions = array(
+        'ssl' => array(
+            'verify_peer' => false,
+            'verify_peer_name' => false,
+            'allow_self_signed' => true
+        )
+    );
+
+    $mail->SMTPSecure = 'ssl'; //Enable implicit SSL encryption
+    $mail->Port = 465; //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+
+    //Recipients
+    $mail->setFrom('from@example.com', 'Admin');
+    $mail->addAddress($r_email); //Add a recipient
+
+    //Content
+    $mail->isHTML(true); //Set email format to HTML
+    $mail->Subject = 'Email Verification';
+    $email_template = "
+         <h2>You have create an account successfully</h2>
+         <h4>Verify your email address using the below given Link</h4>
+         <br><br>
+         <a href='http://localhost/genzquest/verifyemail.php?token=$verify_token'>Verification Link</a>
+     ";
+
+    $mail->Body = $email_template;
+
+    $mail->send();
+    echo 'Message has been sent';
 }
- else{
-    $insert_query ="INSERT INTO `registered`(`db_fullName`, `db_username`, `db_email`, `db_dob`, `db_mobile`, `db_pass`, `db_gender`) VALUES ('$r_fullName','$r_username','$r_email','$r_dob','$r_mobile','$r_pass','$r_gender')";
-    $insert_query_run = mysqli_query($conn,$insert_query);
-    if($insert_query_run)
-    {
-        sendemail_verify
-        $_SESSION['status'] = "Registerd Successful..! Please Verify your Email Address..";
-        header("Location: register.php");
-    } else {
-        $_SESSION['status'] = "Registration Failed";
-        header("Location: register.php");
+
+
+if (isset($_POST['submit'])) {
+    $r_username = $_POST['r_username'];
+    $r_pass = $_POST["r_pass"];
+    $r_con_pass = $_POST["r_con_pass"];
+    $r_email = $_POST["r_email"];
+    $r_mobile = $_POST["r_mobile"];
+    $verify_token = md5(rand());
+
+    $insert_query = "INSERT INTO `registration`(`username`, `email`, `mobile`, `password`, `verify_token`) 
+     VALUES ('$r_username','$r_email','$r_mobile','$r_pass','$verify_token')";
+
+    $duplicate_username = mysqli_query($conn, "SELECT * FROM `registration` WHERE username='$r_username'");
+    $duplicate_email = mysqli_query($conn, "SELECT * FROM `registration` WHERE email='$r_email'");
+
+    sendmail($r_email, $r_username, $verify_token);
+
+
+    $email_pattern = "/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/";
+    $_mobile_pattern = "/(\+88)?-?01[3-9]\d{8}/";
+
+
+    // Validate email and mobile, and ensure password matches
+    if (!preg_match($email_pattern, $r_email)) {
+        echo "<script>alert('Invalid Email. Please Try Again!!')</script>";
+        echo "<script>location.href='register.php'</script>";
+    } else if (!preg_match($_mobile_pattern, $r_mobile)) {
+        echo "<script>alert('Use BD Mobile Number!!')</script>";
+        echo "<script>location.href='register.php'</script>";
+    } else if ($r_pass !== $r_con_pass) {
+        echo "<script>alert('Password and Confirm Password do not match!!')</script>";
+        echo "<script>location.href='register.php'</script>";
     }
- 
-}
 
 
+
+
+    if (!mysqli_query($conn, $insert_query)) {
+        error_log("Failed to insert user data into the database.");
+        echo "<script>alert('Registration failed!')</script>";
+        echo "<script>location.href='register.php'</script>";
+    } else {
+        sendmail("$r_email", "$r_username", "$verify_token");
+        echo "<script>alert('Registration Success!')</script>";
+        echo "<script>location.href='register.php'</script>";
+    }
+} else {
+    echo "<script>alert('Not Accessible!')</script>";
+    echo "<script>location.href='login.php'</script>";
 }
 
 ?>
