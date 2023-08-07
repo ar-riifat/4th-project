@@ -40,7 +40,7 @@
                         <label for="formCheck" class="form-check-label text-secondary"><small>Remember Me</small></label>
                     </div>
                     <div class="forgot">
-                        <small><a href="#">Forgot Password?</a></small>
+                        <small><a href="password-reset.php" class="float-end">Forgot Password?</a></small>
                     </div>
                 </div>
                 <div class="input-group mb-3">
@@ -52,9 +52,7 @@
                 <div class="row">
                     <small>Don't have an account? <a href="register.php">Sign Up</a></small>
                 </div>
-                <div>
-                    <a href="reset.php" class="float-end">forget Password? </a>
-                </div>
+
           </div>
        </div> 
 
