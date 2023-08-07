@@ -38,7 +38,7 @@ session_start();
                             <h5>Change Password</h5>
                         </div>
                     <div class="card-body p-4">
-                        <form action="" method="POST">
+                        <form action="password-reset-code.php" method="POST">
 
                             <div class="form-group mb-3">
                                 <label >Email Address</label>
