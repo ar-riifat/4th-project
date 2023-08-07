@@ -16,8 +16,8 @@ function sendmail($r_email, $r_username, $verify_token)
     $mail->SMTPAuth = true; //Enable SMTP authentication
 
     $mail->Host = 'smtp.gmail.com'; //Set the SMTP server to send through
-    $mail->Username = 'ferdousjannat0103@gmail.com'; //SMTP username
-    $mail->Password = 'xvduhbgpzbgpbarq'; //SMTP password
+    $mail->Username = 'anisurrahmanrifat54@gmail.com'; //SMTP username
+    $mail->Password = 'qbrcecbmvpczlarj'; //SMTP password
 
     $mail->SMTPOptions = array(
         'ssl' => array(
@@ -31,7 +31,7 @@ function sendmail($r_email, $r_username, $verify_token)
     $mail->Port = 465; //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
     //Recipients
-    $mail->setFrom('from@example.com', 'Admin');
+    $mail->setFrom('from@example.com', 'Admin genZquest');
     $mail->addAddress($r_email); //Add a recipient
 
     //Content
@@ -41,7 +41,7 @@ function sendmail($r_email, $r_username, $verify_token)
          <h2>You have create an account successfully</h2>
          <h4>Verify your email address using the below given Link</h4>
          <br><br>
-         <a href='http://localhost/genzquest/verifyemail.php?token=$verify_token'>Verification Link</a>
+         <a href='http://localhost/4th-project/verifyemail.php?token=$verify_token'>Verification Link</a>
      ";
 
     $mail->Body = $email_template;

@@ -32,6 +32,7 @@
                 </div>
                 <div class="input-group mb-1">
                     <input type="password" class="form-control form-control-lg bg-light fs-6"   placeholder="Password" name="l_pass">
+                    <img src="eye-close.png">
                 </div>
                 <div class="input-group mb-5 d-flex justify-content-between">
                     <div class="form-check">
@@ -50,6 +51,9 @@
                 </div>
                 <div class="row">
                     <small>Don't have an account? <a href="register.php">Sign Up</a></small>
+                </div>
+                <div>
+                    <a href="reset.php" class="float-end">forget Password? </a>
                 </div>
           </div>
        </div> 
