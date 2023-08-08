@@ -81,12 +81,53 @@ if(!empty($email))
     if(!empty($token)&& !empty($new_password) && !empty($confirm_password))
     {
         $check_token = "SELECT verify_token FROM registration WHERE verify_token='$token' LIMIT 1";
+        $check_token_run = mysqli_query($conn, $check_token);
+
+        if(mysqli_num_rows($check_token_run) > 0)
+        {
+            if($new_password == $confirm_password)
+            {
+                $update_password ="UPDATE registration SET password='$new_password WHERE verify_token='$token' LIMIT 1";
+                $update_password_run =mysqli_query($conn, $update_password);
+                
+                if($update_password_run)
+                {
+                    $new_token = md5(rand())."anis";
+                    $update_to_new_token ="UPDATE registration SET verify_token='$new_token WHERE verify_token='$token' LIMIT 1";
+                    $update_to_new_token_run =mysqli_query($conn, $update_to_new_token);
+
+                    $_SESSION['status'] = "New Password Successfully Updated!!";
+                header("Location: login.php");
+                exit(0);
+                }
+                else
+                {
+                    $_SESSION['status'] = " Did not update password. Something went wrong!!";
+                header("Location: Password-change.php?token=$token&email=$email");
+                exit(0);
+                }
+            }
+            else
+            {
+                $_SESSION['status'] = "Password & Confirm Password does not match";
+                header("Location: Password-change.php?token=$token&email=$email");
+                exit(0);
+
+            }
+        }
+        else
+        {
+            $_SESSION['status'] = "Invalid Token";
+            header("Location: Password-change.php?token=$token&email=$email");
+            exit(0);
+
+        }
     }
     else
     {
         $_SESSION['status'] = "All Filed are Mandetory";
-    header("Location: Password-change.php?token=$token&email=$email");
-    exit(0);
+        header("Location: Password-change.php?token=$token&email=$email");
+        exit(0);
     }
 
 }
@@ -97,5 +138,6 @@ else
     exit(0);
 
 }
+
 
 ?>
