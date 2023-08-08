@@ -68,4 +68,34 @@ if (isset($_POST['password_reset_link'])) {
         exit(0);
     }
 }
+
+if(isset($_POST['password_update']))
+{
+    $email = mysqli_real_escape_string($conn, $_POST['email']);
+    $new_password = mysqli_real_escape_string($conn, $_POST['new_password']);
+    $confirm_password = mysqli_real_escape_string($conn, $_POST['confirm_password']);
+    $token = mysqli_real_escape_string($conn, $_POST['password_token']);
+}
+if(!empty($email))
+{
+    if(!empty($token)&& !empty($new_password) && !empty($confirm_password))
+    {
+        $check_token = "SELECT verify_token FROM registration WHERE verify_token='$token' LIMIT 1";
+    }
+    else
+    {
+        $_SESSION['status'] = "All Filed are Mandetory";
+    header("Location: Password-change.php?token=$token&email=$email");
+    exit(0);
+    }
+
+}
+else
+{
+    $_SESSION['status'] = "No Token Available";
+    header("Location: Password-reset.php");
+    exit(0);
+
+}
+
 ?>
