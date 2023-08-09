@@ -75,15 +75,15 @@
     <div class="row">
       <div class="col-sm-5">
       <div class="contact-image">
-          <img src="Images/pic4.jpg" alt="Small Image" class="img-fluid" width="500" height="500">
+          <img src="Images/p1.png" alt="Small Image" class="img-fluid" width="500" height="500">
         </div>
         <p>Contact us and we'll get back to you within 24 hours.</p>
         <p><span class="bi bi-geo-alt-fill"></span> Sylhet, Bangladesh</p>
 
-        <p><span class="bi bi-telephone-fill"></span> +8801777777777</p>
+        <p><span class="bi bi-telephone-fill"></span> +8801783-618103</p>
 
         
-        <p><span class="bi bi-envelope"></span><a href="mailto:sabb@gmail.com"> sabb@gmail.com</a></p>
+        <p><span class="bi bi-envelope"></span><a href="mailto:sabb@gmail.com"> jannatulsabrina1067@gmail.com</a></p>
       </div>
 
    <div class="col-sm-7 slideanim">
@@ -114,27 +114,24 @@
 
         <div class="text-center py-3">
                 <p>or sign up with:</p>
-                <a href="https://www.facebook.com" target="_blank" class="btn btn-outline-primary btn-floating mx-1">
+                <a href="https://www.facebook.com/JFSabrin" target="_blank" class="btn btn-outline-primary btn-floating mx-1">
                     <i class="fab fa-facebook-f" style="color: #1877F2;"></i></a>
                 </button>
 
-                <a href="https://www.youtube.com" target="_blank" class="btn btn-outline-danger btn-floating mx-1">
+                <a href="https://youtube.com/@jannatsabrin7426" target="_blank" class="btn btn-outline-danger btn-floating mx-1">
                     <i class="fab fa-youtube" style="color: #DB4437;"></i></a>
                 </button>
 
-                <a href="https://www.twitter.com" target="_blank" class="btn btn-outline-info btn-floating mx-1">
+                <a href="https://twitter.com/jf_sabb" target="_blank" class="btn btn-outline-info btn-floating mx-1">
                      <i class="fab fa-twitter" style="color: #1DA1F2;"></i></a>
 
 
                      <a href="https://github.com/Jannatul-Ferdous-Sabrin" target="_blank" class="btn btn-outline-dark btn-floating mx-1">
                     <i class="fab fa-github" style="color: #333;"></i></a>
                 </button>
-                
             </div>
 </form>
-
 </div>
- 
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>

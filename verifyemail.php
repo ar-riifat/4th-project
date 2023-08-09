@@ -11,7 +11,7 @@ if (mysqli_num_rows($verify_query) > 0) {
         $update_query = mysqli_query($conn, "UPDATE registration SET verify_status = '1' WHERE verify_token = '{$row['verify_token']}'");
         if ($update_query) {
             echo "<script>alert('Account Verified!!')</script>";
-            echo "<script>location.href='register.php'</script>";
+            echo "<script>location.href='login.php'</script>";
         } else {
             echo "<script>alert('Account not created.!!')</script>";
             echo "<script>location.href='register.php'</script>";

@@ -31,7 +31,7 @@ function sendmail($r_email, $r_username, $verify_token)
     $mail->Port = 465; //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
     //Recipients
-    $mail->setFrom('from@example.com', 'Admin genZquest');
+    $mail->setFrom('from@example.com', 'Admin');
     $mail->addAddress($r_email); //Add a recipient
 
     //Content
@@ -49,7 +49,6 @@ function sendmail($r_email, $r_username, $verify_token)
     $mail->send();
     echo 'Message has been sent';
 }
-
 
 if (isset($_POST['submit'])) {
     $r_username = $_POST['r_username'];
@@ -82,9 +81,13 @@ if (isset($_POST['submit'])) {
     } else if ($r_pass !== $r_con_pass) {
         echo "<script>alert('Password and Confirm Password do not match!!')</script>";
         echo "<script>location.href='register.php'</script>";
+    }else if (mysqli_num_rows($duplicate_username) > 0) { //duplicate username check from db
+        echo "<script>alert('This Username is already taken..!!')</script>";
+        echo "<script>location.href='register.php'</script>";
+    } else if (mysqli_num_rows($duplicate_email) > 0) { //duplicate email check from db
+        echo "<script>alert('This email is already taken..!!')</script>";
+        echo "<script>location.href='register.php'</script>";
     }
-
-
 
 
     if (!mysqli_query($conn, $insert_query)) {
