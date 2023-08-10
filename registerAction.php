@@ -87,18 +87,18 @@ if (isset($_POST['submit'])) {
     } else if (mysqli_num_rows($duplicate_email) > 0) { //duplicate email check from db
         echo "<script>alert('This email is already taken..!!')</script>";
         echo "<script>location.href='register.php'</script>";
-    }
-
-
-    if (!mysqli_query($conn, $insert_query)) {
-        error_log("Failed to insert user data into the database.");
-        echo "<script>alert('Registration failed!')</script>";
-        echo "<script>location.href='register.php'</script>";
     } else {
-        sendmail("$r_email", "$r_username", "$verify_token");
-        echo "<script>alert('Registration Success!')</script>";
-        echo "<script>location.href='register.php'</script>";
-    }
+
+                if (!mysqli_query($conn, $insert_query)) {
+                    error_log("Failed to insert user data into the database.");
+                    echo "<script>alert('Registration failed!')</script>";
+                    echo "<script>location.href='register.php'</script>";
+                } else {
+                    sendmail("$r_email", "$r_username", "$verify_token");
+                    echo "<script>alert('Registration Success!')</script>";
+                    echo "<script>location.href='register.php'</script>";
+                }
+            }
 } else {
     echo "<script>alert('Not Accessible!')</script>";
     echo "<script>location.href='login.php'</script>";
