@@ -80,7 +80,7 @@ if (isset($_POST['submit'])) {
     } else if (!preg_match($_mobile_pattern, $r_mobile)) {
         echo "<script>alert('Use BD Mobile Number!!')</script>";
         echo "<script>location.href='register.php'</script>";
-    }else if (!preg_match($_pass_pattern, $r_pass)) {
+    }else if (!preg_match($_password_pattern, $r_pass)) {
         echo "<script>alert('1 Uppercase 1 Lowercase 1 Special Character & 1 digits Password..!!')</script>";
         echo "<script>location.href='register.php'</script>";
     
