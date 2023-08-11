@@ -73,7 +73,7 @@
 <div id="contact" class="container-fluid bg-grey">
     <h2 class="text-center py-5 m-auto" style="color:rgb(7,7, 78);">CONTACT</h2>
     <div class="row">
-      <div class="col-sm-5">
+      <div class="col-sm-5 ">
       <div class="contact-image">
           <img src="Images/p1.png" alt="Small Image" class="img-fluid" width="500" height="500">
         </div>

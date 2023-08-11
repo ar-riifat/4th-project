@@ -7,34 +7,7 @@
     <title>Create New Account</title>
     <link href="CSS/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="CSS/style.css">
-    <style>
-                    .custom-password-input {
-            width: 100%;
-            outline: 0;
-            font-size: 24px;
-            color: #555;
-            padding-right: 40px;
-            transition: border-color 0.3s ease;
-        }
-        .custom-password-input:focus {
-            border-color: #103cbe;
-        }
-                #eyeicon {
-            position: absolute;
-            right: 23rem;
-            top: 25rem;
-            width: 30px;
-            cursor: pointer;
-        }
 
-                #eye-icon {
-            position: absolute;
-            right: 23rem;
-            top: 28.5rem;
-            width: 30px;
-            cursor: pointer;
-        }
-    </style>
 </head>
 <body>
     <div class="container d-flex justify-content-center align-items-center min-vh-100">
@@ -61,12 +34,10 @@
                             <input type="tel" class="form-control form-control-lg bg-light fs-6" placeholder="Mobile" name="r_mobile">
                         </div>
                         <div class="mb-3">
-                            <input type="password" class="form-control form-control-lg bg-light fs-6  custom-password-input" placeholder="Password" name="r_pass">
-                            <img src="Images/eye-close.png" id="eyeicon">
+                            <input type="password" class="form-control form-control-lg bg-light fs-6  " placeholder="Password" name="r_pass">
                         </div>
                         <div class="mb-3">
-                            <input type="password" class="form-control form-control-lg bg-light fs-6  custom-password-input" placeholder="Confirm Password" name="r_con_pass">
-                            <img src="Images/eye-close.png" id="eye-icon">
+                            <input type="password" class="form-control form-control-lg bg-light fs-6  " placeholder="Confirm Password" name="r_con_pass">
                         </div>
                         <div class="mb-3">
                             <button class="btn btn-lg btn-primary w-100 fs-6" name="submit">Register</button>
@@ -80,19 +51,6 @@
         </div>
     </div>
 
-    <script>
-        let eyeicon = document.getElementById("eyeicon");
-        let password = document.getElementById('password"]');
-        eyeicon.onclick = function () {
-            if (password.type === "password") {
-                password.type = "text";
-                eyeicon.src = "Images/eye-open.png";
-            } else {
-                password.type = "password";
-                eyeicon.src = "Images/eye-close.png";
-            }
-        };
-    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>

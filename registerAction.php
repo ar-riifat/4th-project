@@ -69,6 +69,8 @@ if (isset($_POST['submit'])) {
 
     $email_pattern = "/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/";
     $_mobile_pattern = "/(\+88)?-?01[3-9]\d{8}/";
+    $_password_pattern = "/^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+{}\[\]:;<>,.?~\\/\-|])(?=.*[0-9]).+$/";
+
 
 
     // Validate email and mobile, and ensure password matches
@@ -78,6 +80,10 @@ if (isset($_POST['submit'])) {
     } else if (!preg_match($_mobile_pattern, $r_mobile)) {
         echo "<script>alert('Use BD Mobile Number!!')</script>";
         echo "<script>location.href='register.php'</script>";
+    }else if (!preg_match($_pass_pattern, $r_pass)) {
+        echo "<script>alert('1 Uppercase 1 Lowercase 1 Special Character & 1 digits Password..!!')</script>";
+        echo "<script>location.href='register.php'</script>";
+    
     } else if ($r_pass !== $r_con_pass) {
         echo "<script>alert('Password and Confirm Password do not match!!')</script>";
         echo "<script>location.href='register.php'</script>";
@@ -87,18 +93,19 @@ if (isset($_POST['submit'])) {
     } else if (mysqli_num_rows($duplicate_email) > 0) { //duplicate email check from db
         echo "<script>alert('This email is already taken..!!')</script>";
         echo "<script>location.href='register.php'</script>";
-    } else {
+    } else 
+    {
 
-                if (!mysqli_query($conn, $insert_query)) {
-                    error_log("Failed to insert user data into the database.");
-                    echo "<script>alert('Registration failed!')</script>";
-                    echo "<script>location.href='register.php'</script>";
-                } else {
-                    sendmail("$r_email", "$r_username", "$verify_token");
-                    echo "<script>alert('Registration Success!')</script>";
-                    echo "<script>location.href='register.php'</script>";
-                }
-            }
+    if (!mysqli_query($conn, $insert_query)) {
+        error_log("Failed to insert user data into the database.");
+        echo "<script>alert('Registration failed!')</script>";
+        echo "<script>location.href='register.php'</script>";
+    } else {
+        sendmail("$r_email", "$r_username", "$verify_token");
+        echo "<script>alert('Registration Success!')</script>";
+        echo "<script>location.href='register.php'</script>";
+    }
+    }
 } else {
     echo "<script>alert('Not Accessible!')</script>";
     echo "<script>location.href='login.php'</script>";
