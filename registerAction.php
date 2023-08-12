@@ -3,7 +3,6 @@ include "config.php";
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
-use PHPMailer\PHPMailer\Exception;
 
 require 'vendor/autoload.php';
 
@@ -63,8 +62,6 @@ if (isset($_POST['submit'])) {
 
     $duplicate_username = mysqli_query($conn, "SELECT * FROM `registration` WHERE username='$r_username'");
     $duplicate_email = mysqli_query($conn, "SELECT * FROM `registration` WHERE email='$r_email'");
-
-    sendmail($r_email, $r_username, $verify_token);
 
 
     $email_pattern = "/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/";
