@@ -19,7 +19,7 @@ function sendmail($r_email, $r_username, $verify_token)
     $mail->Username = 'anisurrahmanrifat54@gmail.com'; //SMTP username
     $mail->Password = 'qbrcecbmvpczlarj'; //SMTP password
 
-    $mail->SMTPOptions = array(
+    $mail->SMTPOptions = array( 
         'ssl' => array(
             'verify_peer' => false,
             'verify_peer_name' => false,
