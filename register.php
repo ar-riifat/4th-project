@@ -54,7 +54,12 @@
                         <h2>Create New Account</h2>
                         <p>Thanks for choosing us!</p>
                     </div>
+                    <div class="mb-3">
+                        <a href="http://localhost/4th-project/companyreg.php"> <button class="btn btn-lg btn-dark w-5 fs-6" name="submit">Company</button> </a>
+                        <!-- <button class="btn btn-lg btn-primary w-100 fs-6" name="submit">Company</button> -->
+                        </div>
                     <form action="registerAction.php" method="POST">
+                       
                         <div class="mb-3">
                             <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Username"
                                 name="r_username">
