@@ -88,6 +88,10 @@ if (!isset($_SESSION['username'])) {
           <li class="nav-item">
             <a class="nav-link me-2" href="contact.php">Contact Us</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link me-2" href="profile.php">Profile</a>
+          </li>
+
 
           <?php
           if (!isset($_SESSION['username'])) {
