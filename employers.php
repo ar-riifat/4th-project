@@ -14,7 +14,7 @@
             outline: 0;
             font-size: 24px;
             padding-right: 40px;
-            transition: border-color 0.9s ease;
+            transition: border-color 0.3s ease;
         }
 
         .custom-password-input:focus {
@@ -36,27 +36,7 @@
             width: 30px;
             cursor: pointer;
         }
-
-        .register-options {
-        margin-bottom: 20px;
-    }
-
-    .register-options label {
-        display: block;
-        font-weight: bold;
-        margin-bottom: 8px;
-        color: #333;
-    }
-
-    .register-options .form-check {
-        display: inline-block;
-        margin-right: 20px; /* Adjust the spacing between the buttons */
-    }
-
-    .register-options .form-check input {
-        margin-right: 5px;
-    }
-</style>
+    </style>
 </head>
 
 <body>
@@ -71,21 +51,18 @@
             <div class="col-md-6 right-box">
                 <div class="row align-items-center">
                     <div class="header-text mb-2">
-                        <h2>Create New Account</h2>
+                        <h2>Create Employer Account</h2>
                         <p>Thanks for choosing us!</p>
                     </div>
-                    <form action="registerAction.php" method="POST">
-
+                    <form action="employeesAction" method="POST">
                     <div class="mb-3">
-                            <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Firstname"
-                                name="r_fname">
+                            <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Company Name"
+                                name="r_cname" required type="text">
                         </div>
-
                         <div class="mb-3">
-                            <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Lastname"
-                                name="r_lname">
+                            <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Company Type. EX:Booking/Travelling"
+                                name="r_ctype" required type="text">
                         </div>
-
                         <div class="mb-3">
                             <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Username"
                                 name="r_username">
@@ -112,36 +89,10 @@
                                 placeholder="Confirm Password" name="r_con_pass">
                             <img src="Images/eye-close.png" id="eyeiconConfirm">
                         </div>
-
-
-
-                        <div class="mb-3 register-options">
-                            <label>Register As:</label>
-                            <div class="form-check">
-                                <input type="radio" name="register_option" value="employer" checked> Employer
-                            </div>
-                            <div class="form-check">
-                                <input type="radio" name="register_option" value="employee"> Employee
-                            </div>
-                        </div>
-
-
-
                         <div class="mb-3">
                             <button class="btn btn-lg btn-primary w-100 fs-6" name="submit">Register</button>
                         </div>
-                        <div class="row">
-                            <small>Already have an account? <a href="login.php">Login</a></small>
-                        </div>
                     </form>
-
-
-
-
-
-
-
-
                 </div>
             </div>
         </div>
@@ -172,14 +123,14 @@
         });
     </script>
 
-
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
         integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
         crossorigin="anonymous"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
         integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
-        crossorigin="anonymous"></script>
+        crossorigin="anonymous">
+    </script>
 
 </body>
 

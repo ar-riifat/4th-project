@@ -103,5 +103,21 @@ body {
     padding: 20px;
   }
 }
+.modal-body {
+  max-height: none;
+  overflow: visible
+}
+.modal-body,
+.modal-overflow .modal-body {
+    position: static;
+    margin: 0;
+    height: auto!important;
+    max-height: none!important;
+    overflow: visible!important
+}
+.modal-footer,
+.modal-overflow .modal-footer {
+    position: static
+}
 
 
